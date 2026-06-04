@@ -1,0 +1,21 @@
+{
+  "title": "AI 健身教练",
+  "subtitle": "你的专属情绪健身教练",
+  "typing": "输入中...",
+  "placeholder": "说说你的想法...",
+  "welcome": "嘿！我是你的AI情绪教练！我会陪你度过每一次训练，听你吐槽、为你打气、帮你庆祝每一个进步。今天感觉怎么样？",
+  "quickActions": {
+    "motivate": "🔥 给我打气",
+    "celebrate": "🎉 完成训练了",
+    "vent": "😮‍💨 不想动",
+    "miss": "💌 想你了",
+    "flirt": "💕 撩我一下"
+  },
+  "personas": {
+    "abyss": { "name": "秦彻", "desc": "暗点首领·霸道总裁" },
+    "fire": { "name": "炽阳", "desc": "热血教练·燃爆全场" },
+    "moon": { "name": "月白", "desc": "温柔陪练·治愈系" },
+    "storm": { "name": "凌风", "desc": "毒舌傲娇·激将法" },
+    "sweet": { "name": "糖心", "desc": "元气甜心·可爱暴击" }
+  }
+}

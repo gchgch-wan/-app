@@ -1,0 +1,34 @@
+{
+  "level": "Level {level}",
+  "xp": "{xp} XP",
+  "streak": "{days} Day Streak",
+  "levelUp": "Level Up!",
+  "levelUpDesc": "You've reached Level {level}",
+  "achievements": {
+    "title": "Achievements",
+    "unlocked": "Unlocked",
+    "locked": "Locked",
+    "first_workout": "First Workout",
+    "streak_3": "3-Day Streak",
+    "streak_7": "7-Day Star",
+    "streak_30": "Monthly Warrior",
+    "workout_10": "10 Workouts",
+    "workout_50": "50 Workouts",
+    "workout_100": "100 Workouts",
+    "hiit_master": "HIIT Expert",
+    "yoga_guru": "Yoga Guru",
+    "strength_champion": "Strength Champion",
+    "early_bird": "Early Bird",
+    "night_owl": "Night Owl",
+    "level_10": "Bronze Trainer",
+    "level_25": "Silver Trainer",
+    "all_categories": "All-Rounder"
+  },
+  "challenges": {
+    "daily": "Daily Challenge",
+    "weekly": "Weekly Challenge",
+    "monthly": "Monthly Challenge",
+    "progress": "Progress",
+    "completed": "Completed"
+  }
+}

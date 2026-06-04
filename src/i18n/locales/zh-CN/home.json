@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "badge": "已有 12,800+ 学员加入",
+    "title": "你的AI健身伴侣",
+    "titleHighlight": "3D互动",
+    "subtitle": "融合恋与深空风格的沉浸式健身体验，你的专属AI教练24小时陪伴",
+    "cta1": "开始免费试用",
+    "cta2": "了解更多",
+    "stats": {
+      "courses": "50+ 精品课程",
+      "users": "活跃学员",
+      "satisfaction": "满意度",
+      "rating": "用户评分"
+    }
+  },
+  "features": {
+    "title": "为什么选择NebulaFit",
+    "subtitle": "我们不只是健身平台，更是你的专属陪伴",
+    "ai": { "title": "AI 健身伴侣", "desc": "3D动漫角色24小时陪伴，5种人设随心切换" },
+    "workout": { "title": "多元化训练", "desc": "HIIT、瑜伽、力量、有氧、舞蹈五大体系" },
+    "gamification": { "title": "游戏化激励", "desc": "XP升级、成就徽章、连胜奖励，让坚持上瘾" },
+    "community": { "title": "全球社区", "desc": "排行榜竞争、挑战赛比拼，一起进步" }
+  }
+}

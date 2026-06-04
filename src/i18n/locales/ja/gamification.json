@@ -1,0 +1,34 @@
+{
+  "level": "レベル {level}",
+  "xp": "{xp} XP",
+  "streak": "{days}日連続",
+  "levelUp": "レベルアップ！",
+  "levelUpDesc": "レベル {level} に到達しました",
+  "achievements": {
+    "title": "実績",
+    "unlocked": "解除済み",
+    "locked": "ロック中",
+    "first_workout": "初めてのトレーニング",
+    "streak_3": "3日連続",
+    "streak_7": "7日連続スター",
+    "streak_30": "月間戦士",
+    "workout_10": "10回達成",
+    "workout_50": "50回マスター",
+    "workout_100": "100回レジェンド",
+    "hiit_master": "HIITエキスパート",
+    "yoga_guru": "ヨガグル",
+    "strength_champion": "筋力チャンピオン",
+    "early_bird": "朝活達人",
+    "night_owl": "夜練スター",
+    "level_10": "ブロンズトレーナー",
+    "level_25": "シルバートレーナー",
+    "all_categories": "オールラウンダー"
+  },
+  "challenges": {
+    "daily": "デイリーチャレンジ",
+    "weekly": "ウィークリーチャレンジ",
+    "monthly": "マンスリーチャレンジ",
+    "progress": "進捗",
+    "completed": "完了"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "workouts": "Workouts",
+    "achievements": "Achievements",
+    "leaderboard": "Leaderboard",
+    "challenges": "Challenges",
+    "community": "Community"
+  },
+  "actions": {
+    "start": "Start",
+    "continue": "Continue",
+    "complete": "Complete",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "join": "Join Now",
+    "try": "Free Trial"
+  },
+  "language": {
+    "switch": "Language",
+    "zh": "中文",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "loading": "Loading...",
+  "error": "Something went wrong. Please try again."
+}

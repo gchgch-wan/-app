@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "badge": "12,800+ Members Joined",
+    "title": "Your AI Fitness Companion",
+    "titleHighlight": "3D Interactive",
+    "subtitle": "Immersive fitness experience inspired by Love and Deepspace, your AI coach available 24/7",
+    "cta1": "Start Free Trial",
+    "cta2": "Learn More",
+    "stats": {
+      "courses": "50+ Courses",
+      "users": "Active Members",
+      "satisfaction": "Satisfaction",
+      "rating": "User Rating"
+    }
+  },
+  "features": {
+    "title": "Why NebulaFit",
+    "subtitle": "More than a fitness platform — your dedicated companion",
+    "ai": { "title": "AI Fitness Companion", "desc": "3D anime character with 24/7 companionship, 5 personalities to match your mood" },
+    "workout": { "title": "Diverse Workouts", "desc": "HIIT, Yoga, Strength, Cardio, Dance — five training systems" },
+    "gamification": { "title": "Gamified Motivation", "desc": "XP leveling, achievement badges, streak rewards — make consistency addictive" },
+    "community": { "title": "Global Community", "desc": "Leaderboard competition, challenge battles — progress together" }
+  }
+}

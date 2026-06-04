@@ -1,0 +1,21 @@
+{
+  "title": "AI Coach",
+  "subtitle": "Your Personal Emotion-Based Fitness Coach",
+  "typing": "Typing...",
+  "placeholder": "Share your thoughts...",
+  "welcome": "Hey! I'm your AI emotion coach! I'll be with you through every workout — listen to your rants, cheer you on, and celebrate every milestone. How are you feeling today?",
+  "quickActions": {
+    "motivate": "🔥 Pump Me Up",
+    "celebrate": "🎉 Workout Done",
+    "vent": "😮‍💨 Not Feeling It",
+    "miss": "💌 Miss You",
+    "flirt": "💕 Tease Me"
+  },
+  "personas": {
+    "abyss": { "name": "Abyss", "desc": "Dark Leader · Dominant" },
+    "fire": { "name": "Blaze", "desc": "Fiery Coach · Hype Beast" },
+    "moon": { "name": "Luna", "desc": "Gentle Trainer · Healing" },
+    "storm": { "name": "Storm", "desc": "Tsundere · Tough Love" },
+    "sweet": { "name": "Sugar", "desc": "Genki Sweetheart · Cute Attack" }
+  }
+}

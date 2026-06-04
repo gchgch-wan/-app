@@ -1,0 +1,34 @@
+{
+  "categories": {
+    "all": "All",
+    "hiit": "HIIT Cardio",
+    "yoga": "Yoga & Stretch",
+    "strength": "Strength Training",
+    "cardio": "Cardio",
+    "dance": "Dance Fitness",
+    "stretch": "Recovery"
+  },
+  "difficulty": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "details": {
+    "duration": "Duration",
+    "calories": "Calories Burn",
+    "equipment": "Equipment",
+    "exercises": "Exercises",
+    "sets": "sets",
+    "reps": "reps",
+    "rest": "Rest",
+    "getReady": "Get Ready",
+    "workoutComplete": "Workout Complete!"
+  },
+  "timer": {
+    "work": "Work",
+    "rest": "Rest",
+    "round": "Round {current} / {total}",
+    "pause": "Pause",
+    "resume": "Resume"
+  }
+}

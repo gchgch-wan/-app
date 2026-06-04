@@ -1,0 +1,34 @@
+{
+  "categories": {
+    "all": "全て",
+    "hiit": "HIIT 燃焼",
+    "yoga": "ヨガ・ストレッチ",
+    "strength": "筋力トレーニング",
+    "cardio": "有酸素運動",
+    "dance": "ダンスフィットネス",
+    "stretch": "リカバリー"
+  },
+  "difficulty": {
+    "beginner": "初級",
+    "intermediate": "中級",
+    "advanced": "上級"
+  },
+  "details": {
+    "duration": "所要時間",
+    "calories": "消費カロリー",
+    "equipment": "必要な器具",
+    "exercises": "トレーニング種目",
+    "sets": "セット",
+    "reps": "回",
+    "rest": "休憩",
+    "getReady": "準備",
+    "workoutComplete": "トレーニング完了！"
+  },
+  "timer": {
+    "work": "運動",
+    "rest": "休憩",
+    "round": "ラウンド {current} / {total}",
+    "pause": "一時停止",
+    "resume": "再開"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "level": "等级 {level}",
+  "xp": "{xp} XP",
+  "streak": "连续 {days} 天",
+  "levelUp": "升级啦！",
+  "levelUpDesc": "你已升至等级 {level}",
+  "achievements": {
+    "title": "成就",
+    "unlocked": "已解锁",
+    "locked": "未解锁",
+    "first_workout": "初次训练",
+    "streak_3": "三日连击",
+    "streak_7": "七日之星",
+    "streak_30": "月度战神",
+    "workout_10": "十练达人",
+    "workout_50": "五十练大师",
+    "workout_100": "百炼成神",
+    "hiit_master": "HIIT 专家",
+    "yoga_guru": "瑜伽大师",
+    "strength_champion": "力量冠军",
+    "early_bird": "晨练达人",
+    "night_owl": "夜练之星",
+    "level_10": "青铜训练者",
+    "level_25": "白银训练者",
+    "all_categories": "全能训练者"
+  },
+  "challenges": {
+    "daily": "每日挑战",
+    "weekly": "每周挑战",
+    "monthly": "每月挑战",
+    "progress": "进度",
+    "completed": "已完成"
+  }
+}

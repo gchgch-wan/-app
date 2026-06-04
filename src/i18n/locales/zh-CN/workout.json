@@ -1,0 +1,34 @@
+{
+  "categories": {
+    "all": "全部",
+    "hiit": "HIIT 燃脂",
+    "yoga": "瑜伽拉伸",
+    "strength": "力量增肌",
+    "cardio": "有氧心肺",
+    "dance": "舞蹈健身",
+    "stretch": "放松拉伸"
+  },
+  "difficulty": {
+    "beginner": "入门",
+    "intermediate": "进阶",
+    "advanced": "高级"
+  },
+  "details": {
+    "duration": "时长",
+    "calories": "消耗热量",
+    "equipment": "所需器材",
+    "exercises": "训练动作",
+    "sets": "组",
+    "reps": "次",
+    "rest": "休息",
+    "getReady": "准备开始",
+    "workoutComplete": "训练完成！"
+  },
+  "timer": {
+    "work": "训练",
+    "rest": "休息",
+    "round": "第 {current} / {total} 轮",
+    "pause": "暂停",
+    "resume": "继续"
+  }
+}
