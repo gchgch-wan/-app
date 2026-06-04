@@ -119,6 +119,7 @@ export default function StandaloneVideoPage() {
               <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }}
                 className="w-full max-w-5xl" onClick={e => e.stopPropagation()}>
                 <VideoPlayer
+                  bilibiliBv={activeVideo.bilibiliBv}
                   mp4_url={activeVideo.mp4_url}
                   startTime={activeVideo.startTime}
                   poster={generatePoster(isZh ? activeVideo.titleZh : activeVideo.title, activeVideo.category, activeVideo.duration, activeVideo.difficulty)}

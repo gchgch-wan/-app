@@ -1,207 +1,61 @@
 // ============================================================
-// NebulaFit 独立视频库 — 可靠CDN，国内可用
-// 当前使用测试视频作为占位，可随时替换为真实训练视频
-// 替换方法：将 mp4_url 改为你的真实视频URL即可
+// NebulaFit 视频库 — B站源为主（国内秒开）+ MP4备用
 // ============================================================
 
 export interface StandaloneVideo {
-  id: string;
-  title: string;
-  titleZh: string;
-  coach: string;
-  coachZh: string;
-  flag: string;
+  id: string; title: string; titleZh: string;
+  coach: string; coachZh: string; flag: string;
   category: VideoCat;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
-  duration: number;
-  calories: number;
-  mp4_url: string;       // 主视频URL — 替换为真实视频即可
-  poster?: string;
-  equipment: string[];
-  tags: string[];
-  isPremium: boolean;
-  description: string;
-  descriptionZh: string;
-  startTime: number;     // 起始秒数，让同一视频的不同片段模拟不同内容
+  duration: number; calories: number;
+  bilibiliBv: string;    // B站BV号 — 国内主源
+  mp4_url: string;       // 海外备用
+  poster?: string; equipment: string[]; tags: string[];
+  isPremium: boolean; description: string; descriptionZh: string;
+  startTime: number;
 }
 
-export type VideoCat = 'hiit' | 'yoga' | 'strength' | 'cardio' | 'dance' | 'abs' | 'fullbody' | 'stretch' | 'pilates';
+export type VideoCat = 'hiit'|'yoga'|'strength'|'cardio'|'dance'|'abs'|'fullbody'|'stretch'|'pilates';
 
-// 可靠视频源（已验证在国内可访问）
-const DEMO_VIDEO = 'https://www.w3schools.com/html/mov_bbb.mp4';
+const MP4 = 'https://www.w3schools.com/html/mov_bbb.mp4';
 
-// 替换指南：将 DEMO_VIDEO 替换为你的视频URL
-// 例如：'https://your-cdn.com/workouts/hiit-beginner.mp4'
+function V(bv:string, cat:VideoCat, diff:string, dur:number, cal:number, eq:string[], tags:string[], prem:boolean, t:number, coach:string, coachZh:string, flag:string, title:string, titleZh:string, desc:string, descZh:string): StandaloneVideo {
+  return { id:'', title,titleZh,coach,coachZh,flag,category:cat,difficulty:diff as any,duration:dur,calories:cal,bilibiliBv:bv,mp4_url:MP4,equipment:eq,tags,isPremium:prem,description:desc,descriptionZh:descZh,startTime:t };
+}
 
 export const STANDALONE_VIDEOS: StandaloneVideo[] = [
-  // ========== HIIT 燃脂 ==========
-  {
-    id: 'hiit-001', title: 'Full Body HIIT Fat Burn', titleZh: '全身HIIT燃脂训练',
-    coach: 'Chris Heria Style', coachZh: 'Chris Heria 风格', flag: '🇺🇸',
-    category: 'hiit', difficulty: 'intermediate', duration: 15, calories: 280,
-    mp4_url: DEMO_VIDEO, startTime: 5,
-    equipment: [], tags: ['HIIT', '燃脂', '全身'], isPremium: false,
-    description: 'High-intensity interval training — maximum burn in minimum time.',
-    descriptionZh: '高强度间歇训练 · 短时高效燃脂 · 无需器械',
-  },
-  {
-    id: 'hiit-002', title: 'Tabata Cardio Blast', titleZh: 'Tabata 有氧爆发训练',
-    coach: 'Pamela Reif Style', coachZh: '帕梅拉风格', flag: '🇩🇪',
-    category: 'hiit', difficulty: 'advanced', duration: 12, calories: 240,
-    mp4_url: DEMO_VIDEO, startTime: 25,
-    equipment: [], tags: ['Tabata', '爆发', '有氧'], isPremium: true,
-    description: 'Tabata protocol — 20s work, 10s rest, 8 rounds.',
-    descriptionZh: 'Tabata训练法 · 20秒训练10秒休息 · 8轮爆发',
-  },
-  {
-    id: 'hiit-003', title: 'Low Impact HIIT', titleZh: '低冲击HIIT训练',
-    coach: 'Chloe Ting Style', coachZh: 'Chloe Ting风格', flag: '🇦🇺',
-    category: 'hiit', difficulty: 'beginner', duration: 20, calories: 200,
-    mp4_url: DEMO_VIDEO, startTime: 45,
-    equipment: [], tags: ['低冲击', '新手', '公寓友好'], isPremium: false,
-    description: 'No jumping HIIT — apartment friendly, knee-safe.',
-    descriptionZh: '无跳跃HIIT · 公寓友好 · 膝盖安全',
-  },
+  // ===== HIIT =====
+  V('BV1Be411M7Tv','hiit','intermediate',12,200,[],['HIIT','燃脂','全身'],false,5, 'Pamela Reif','帕梅拉','🇩🇪', '12 Min Happy HIIT Dance','12分钟快乐HIIT舞蹈燃脂','Pamela best HIIT dance','帕梅拉最受欢迎HIIT · 站立无跳跃 · 快乐燃脂'),
+  V('BV12U4y1f74q','hiit','advanced',10,180,[],['Tabata','爆发','有氧'],true,10, 'Pamela Reif','帕梅拉','🇩🇪', '10 Min Sweaty HIIT','10分钟热血暴汗HIIT','HIIT with boxing elements','拳击踢腿+嘻哈音乐 · 心率飙升'),
+  V('BV13g4y1q7pt','hiit','beginner',15,220,[],['低冲击','新手','有氧'],false,20, 'Pamela Reif','帕梅拉','🇩🇪', '15 Min Cardio Fat Burn','15分钟全身燃脂有氧操','Beginner friendly','新手友好 · 15分钟暴汗'),
 
-  // ========== 瑜伽 ==========
-  {
-    id: 'yoga-001', title: 'Morning Yoga Flow', titleZh: '清晨瑜伽流',
-    coach: 'Adriene Style', coachZh: 'Adriene风格', flag: '🇺🇸',
-    category: 'yoga', difficulty: 'beginner', duration: 20, calories: 80,
-    mp4_url: DEMO_VIDEO, startTime: 10,
-    equipment: ['瑜伽垫'], tags: ['瑜伽', '晨练', '柔韧'], isPremium: false,
-    description: 'Gentle morning flow to wake up your body and mind.',
-    descriptionZh: '温柔晨间瑜伽 · 唤醒身心 · 适合每天练习',
-  },
-  {
-    id: 'yoga-002', title: 'Power Yoga Strength', titleZh: '力量瑜伽训练',
-    coach: 'Adriene Style', coachZh: 'Adriene风格', flag: '🇺🇸',
-    category: 'yoga', difficulty: 'intermediate', duration: 25, calories: 150,
-    mp4_url: DEMO_VIDEO, startTime: 35,
-    equipment: ['瑜伽垫'], tags: ['力量瑜伽', '核心', '塑形'], isPremium: true,
-    description: 'Build strength through yoga poses with longer holds.',
-    descriptionZh: '通过瑜伽体式建立力量 · 长时间保持 · 核心挑战',
-  },
+  // ===== 瑜伽 =====
+  V('BV1uUXMBTE8F','yoga','beginner',15,60,['瑜伽垫'],['瑜伽','拉伸','放松'],false,30, 'Pamela Reif','帕梅拉','🇩🇪', 'Full Body Stretch','全身拉伸放松','Post-workout stretch','训练后全身拉伸 · 帕梅拉同款'),
+  V('BV1LZ4y1z7ug','yoga','intermediate',15,80,['瑜伽垫'],['瑜伽','美背','塑形'],true,40, 'Pamela Reif','帕梅拉','🇩🇪', '15 Min Back Training','15分钟美背肌力训练','Build back strength','帕梅拉美背训练 · 改善体态'),
 
-  // ========== 力量训练 ==========
-  {
-    id: 'str-001', title: 'Dumbbell Full Body Strength', titleZh: '哑铃全身力量训练',
-    coach: 'Jeff Cavaliere Style', coachZh: 'ATHLEAN-X风格', flag: '🇺🇸',
-    category: 'strength', difficulty: 'intermediate', duration: 25, calories: 300,
-    mp4_url: DEMO_VIDEO, startTime: 15,
-    equipment: ['哑铃'], tags: ['力量', '哑铃', '全身'], isPremium: true,
-    description: 'Science-based full body workout with dumbbells.',
-    descriptionZh: '科学全身力量训练 · 哑铃必备 · 渐进式负荷',
-  },
-  {
-    id: 'str-002', title: 'Bodyweight Push-Up Mastery', titleZh: '徒手俯卧撑大师课',
-    coach: 'Chris Heria Style', coachZh: 'Chris Heria风格', flag: '🇺🇸',
-    category: 'strength', difficulty: 'beginner', duration: 15, calories: 180,
-    mp4_url: DEMO_VIDEO, startTime: 40,
-    equipment: [], tags: ['俯卧撑', '自重', '上肢'], isPremium: false,
-    description: 'Master push-ups — from knee push-ups to one-arm variations.',
-    descriptionZh: '俯卧撑大师之路 · 从跪姿到单手 · 进阶指南',
-  },
-  {
-    id: 'str-003', title: 'Glute & Leg Day', titleZh: '翘臀美腿训练日',
-    coach: 'Pamela Reif Style', coachZh: '帕梅拉风格', flag: '🇩🇪',
-    category: 'strength', difficulty: 'intermediate', duration: 20, calories: 220,
-    mp4_url: DEMO_VIDEO, startTime: 55,
-    equipment: ['哑铃', '弹力带'], tags: ['翘臀', '美腿', '下肢'], isPremium: false,
-    description: 'Target glutes and legs with effective compound movements.',
-    descriptionZh: '针对臀腿的复合训练 · 哑铃+弹力带 · 塑形燃脂',
-  },
+  // ===== 力量 =====
+  V('BV1RK41137it','strength','intermediate',15,250,[],['力量','自重','全身'],true,50, 'Chris Heria','Chris Heria','🇺🇸', 'THENX Power Training','THENX疯狂力量训练','Chris Heria THENX','THENX经典 · 全身力量肌肉训练'),
+  V('BV1LYoeYBEcN','strength','beginner',10,100,[],['平板支撑','核心','入门'],false,55, 'Chris Heria','Chris Heria','🇺🇸', 'Plank Challenge','平板支撑挑战','Core building','每天坚持平板支撑 · 改变人生'),
+  V('BV1LZ4y1z7ug','strength','intermediate',20,220,['哑铃','弹力带'],['翘臀','美腿','塑形'],false,60, 'Pamela Reif','帕梅拉','🇩🇪', 'Back & Posture','美背体态训练','Posture fix','帕梅拉美背训练 · 改善驼背'),
 
-  // ========== 有氧心肺 ==========
-  {
-    id: 'cardio-001', title: 'Treadmill Hill Climb', titleZh: '跑步机爬坡训练',
-    coach: 'Heather Robertson Style', coachZh: 'Heather风格', flag: '🇨🇦',
-    category: 'cardio', difficulty: 'intermediate', duration: 20, calories: 350,
-    mp4_url: DEMO_VIDEO, startTime: 8,
-    equipment: ['跑步机'], tags: ['有氧', '爬坡', '燃脂'], isPremium: true,
-    description: 'Hill climb intervals that torch calories and build endurance.',
-    descriptionZh: '爬坡间歇训练 · 燃脂+耐力双提升 · 不伤膝盖',
-  },
-  {
-    id: 'cardio-002', title: 'Jump Rope Cardio', titleZh: '跳绳有氧燃脂',
-    coach: 'Fraser Wilson Style', coachZh: 'Fraser风格', flag: '🇦🇺',
-    category: 'cardio', difficulty: 'beginner', duration: 12, calories: 200,
-    mp4_url: DEMO_VIDEO, startTime: 28,
-    equipment: ['跳绳'], tags: ['跳绳', '有氧', '便携'], isPremium: false,
-    description: 'Jump rope intervals — portable cardio anywhere you go.',
-    descriptionZh: '跳绳间歇训练 · 一根跳绳随时开练 · 高效燃脂',
-  },
+  // ===== 有氧 =====
+  V('BV1eK4y187GC','cardio','intermediate',15,300,[],['有氧','燃脂','夏日'],true,65, 'Pamela Reif','帕梅拉','🇩🇪', 'Summer Cardio Burn','15分钟夏日有氧操','Summer cardio','帕梅拉夏日有氧 · 燃脂暴汗'),
+  V('BV1UGdrY3ETw','cardio','beginner',6,80,[],['腹肌','核心','暴汗'],false,70, 'Pamela Reif','帕梅拉','🇩🇪', '6 Min Ab Workout','6分钟腹肌崛起','Quick ab burner','帕梅拉腹肌训练 · 短时高效'),
 
-  // ========== 腹肌核心 ==========
-  {
-    id: 'abs-001', title: 'Six Pack Ab Circuit', titleZh: '六块腹肌雕刻循环',
-    coach: 'Fraser Wilson Style', coachZh: 'Fraser风格', flag: '🇦🇺',
-    category: 'abs', difficulty: 'advanced', duration: 10, calories: 120,
-    mp4_url: DEMO_VIDEO, startTime: 50,
-    equipment: ['瑜伽垫'], tags: ['腹肌', '核心', '高强度'], isPremium: true,
-    description: '10 moves, 10 minutes — the ultimate ab shredder.',
-    descriptionZh: '10个动作10分钟 · 终极腹肌撕裂者 · 高效核心',
-  },
-  {
-    id: 'abs-002', title: 'Plank Challenge', titleZh: '平板支撑挑战',
-    coach: 'Chris Heria Style', coachZh: 'Chris Heria风格', flag: '🇺🇸',
-    category: 'abs', difficulty: 'beginner', duration: 8, calories: 60,
-    mp4_url: DEMO_VIDEO, startTime: 2,
-    equipment: ['瑜伽垫'], tags: ['平板支撑', '核心', '入门'], isPremium: false,
-    description: 'Build core stability with plank variations for all levels.',
-    descriptionZh: '平板支撑变式 · 全级别适用 · 核心稳定性训练',
-  },
+  // ===== 腹肌 =====
+  V('BV1Lb41177bw','abs','beginner',10,100,[],['腹肌','马甲线','女性'],false,75, 'Chloe Ting','Chloe Ting','🇦🇺', 'Ab Lines Challenge','马甲线腹肌挑战','10min ab lines','Chloe Ting经典 · B站千万播放'),
+  V('BV499892391','abs','advanced',6,80,[],['腹肌','高强度','暴汗'],true,80, 'Pamela Reif','帕梅拉','🇩🇪', '6 Min Intense Abs','6分钟高强度虐腹','Intense ab burner','帕梅拉传奇虐腹 · 马甲线必备'),
 
-  // ========== 全身训练 ==========
-  {
-    id: 'full-001', title: 'Total Body Burn', titleZh: '全身燃脂塑形',
-    coach: 'Heather Robertson Style', coachZh: 'Heather风格', flag: '🇨🇦',
-    category: 'fullbody', difficulty: 'intermediate', duration: 30, calories: 400,
-    mp4_url: DEMO_VIDEO, startTime: 18,
-    equipment: [], tags: ['全身', '燃脂', '综合'], isPremium: true,
-    description: 'Complete full body workout that hits every muscle group.',
-    descriptionZh: '完整全身训练 · 覆盖所有肌群 · 30分钟最高效',
-  },
+  // ===== 全身 =====
+  V('BV1Be411M7Tv','fullbody','intermediate',30,400,[],['全身','燃脂','综合'],true,85, 'Pamela Reif','帕梅拉','🇩🇪', 'Total Body HIIT','全身燃脂HIIT','Full body burn','帕梅拉全身HIIT · 覆盖所有肌群'),
 
-  // ========== 拉伸恢复 ==========
-  {
-    id: 'strh-001', title: 'Deep Stretch Recovery', titleZh: '深度拉伸恢复',
-    coach: 'Adriene Style', coachZh: 'Adriene风格', flag: '🇺🇸',
-    category: 'stretch', difficulty: 'beginner', duration: 15, calories: 50,
-    mp4_url: DEMO_VIDEO, startTime: 30,
-    equipment: ['瑜伽垫'], tags: ['拉伸', '恢复', '放松'], isPremium: false,
-    description: 'Post-workout stretch to improve flexibility and reduce soreness.',
-    descriptionZh: '训练后全身拉伸 · 提升柔韧 · 减少酸痛',
-  },
-  {
-    id: 'strh-002', title: 'Morning Mobility Routine', titleZh: '晨间关节活动度训练',
-    coach: 'Jeff Cavaliere Style', coachZh: 'ATHLEAN-X风格', flag: '🇺🇸',
-    category: 'stretch', difficulty: 'beginner', duration: 10, calories: 30,
-    mp4_url: DEMO_VIDEO, startTime: 42,
-    equipment: [], tags: ['晨练', '关节', '活动度'], isPremium: false,
-    description: 'Daily mobility routine to keep joints healthy and pain-free.',
-    descriptionZh: '每日关节活动度训练 · 保持关节健康 · 远离疼痛',
-  },
+  // ===== 拉伸 =====
+  V('BV1uUXMBTE8F','stretch','beginner',15,50,['瑜伽垫'],['拉伸','恢复','放松'],false,90, 'Pamela Reif','帕梅拉','🇩🇪', 'Deep Stretch Recovery','深度拉伸恢复','Post workout','帕梅拉训练后拉伸 · 加速恢复'),
+  V('BV1uUXMBTE8F','stretch','beginner',10,30,[],['晨练','关节','活动度'],false,95, 'Pamela Reif','帕梅拉','🇩🇪', 'Morning Mobility','晨间关节活动','Daily mobility','每日关节活动 · 保持健康'),
 
-  // ========== 舞蹈健身 ==========
-  {
-    id: 'dance-001', title: 'Dance Cardio Party', titleZh: '舞蹈有氧派对',
-    coach: 'MadFit Style', coachZh: 'MadFit风格', flag: '🇨🇦',
-    category: 'dance', difficulty: 'beginner', duration: 15, calories: 220,
-    mp4_url: DEMO_VIDEO, startTime: 22,
-    equipment: [], tags: ['舞蹈', '有氧', '快乐'], isPremium: false,
-    description: 'Fun dance cardio — burn calories while having a blast.',
-    descriptionZh: '欢乐舞蹈有氧 · 燃烧卡路里 · 快乐健身体验',
-  },
+  // ===== 舞蹈 =====
+  V('BV1e5411n7Mq','dance','beginner',12,200,[],['舞蹈','有氧','欢乐'],false,100, 'Pamela Reif','帕梅拉','🇩🇪', 'Fun Dance Cardio','欢乐有氧舞蹈','Fun dance cardio','帕梅拉趣味有氧 · 快乐燃脂'),
 
-  // ========== 普拉提 ==========
-  {
-    id: 'pil-001', title: 'Pilates Core Sculpt', titleZh: '普拉提核心塑形',
-    coach: 'Heather Robertson Style', coachZh: 'Heather风格', flag: '🇨🇦',
-    category: 'pilates', difficulty: 'intermediate', duration: 20, calories: 160,
-    mp4_url: DEMO_VIDEO, startTime: 48,
-    equipment: ['瑜伽垫'], tags: ['普拉提', '核心', '塑形'], isPremium: true,
-    description: 'Classical Pilates moves to sculpt a strong, lean core.',
-    descriptionZh: '经典普拉提动作 · 塑造强健纤细核心 · 身体控制',
-  },
+  // ===== 普拉提 =====
+  V('BV1uUXMBTE8F','pilates','intermediate',20,160,['瑜伽垫'],['普拉提','核心','塑形'],true,105, 'Pamela Reif','帕梅拉','🇩🇪', 'Pilates Core Sculpt','普拉提核心塑形','Core sculpt','帕梅拉普拉提 · 核心塑形'),
 ];

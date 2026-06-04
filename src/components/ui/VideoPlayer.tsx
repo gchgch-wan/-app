@@ -1,48 +1,23 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 interface Props {
-  mp4_url: string;
+  bilibiliBv?: string;
+  mp4_url?: string;
   startTime?: number;
   poster?: string;
   title?: string;
   className?: string;
 }
 
-export default function VideoPlayer({ mp4_url, startTime, poster, title, className = '' }: Props) {
+export default function VideoPlayer({ bilibiliBv, mp4_url, startTime, poster, title, className = '' }: Props) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [buffering, setBuffering] = useState(false);
-  const [showControls, setShowControls] = useState(true);
-  const [error, setError] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hideTimer = useRef<ReturnType<typeof setTimeout>>();
+  const [useMp4, setUseMp4] = useState(false);
+  const [biliError, setBiliError] = useState(false);
 
-  const formatTime = (s: number) => {
-    const m = Math.floor(s / 60), sec = Math.floor(s % 60);
-    return `${m}:${sec.toString().padStart(2, '0')}`;
-  };
-
-  const seekTo = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const pct = (e.clientX - rect.left) / rect.width;
-    if (videoRef.current) videoRef.current.currentTime = pct * duration;
-  };
-
-  const toggleFullscreen = () => {
-    if (document.fullscreenElement) { document.exitFullscreen(); setIsFullscreen(false); }
-    else if (containerRef.current) { containerRef.current.requestFullscreen(); setIsFullscreen(true); }
-  };
-
-  const handleMouseMove = () => {
-    setShowControls(true);
-    clearTimeout(hideTimer.current);
-    if (isPlaying) hideTimer.current = setTimeout(() => setShowControls(false), 2500);
-  };
+  const hasBili = !!bilibiliBv;
+  const biliUrl = bilibiliBv
+    ? `//player.bilibili.com/player.html?bvid=${bilibiliBv}&page=1&high_quality=1&autoplay=1&danmaku=0`
+    : null;
 
   // 封面
   if (!isPlaying) {
@@ -64,88 +39,67 @@ export default function VideoPlayer({ mp4_url, startTime, poster, title, classNa
             <span className="text-white text-2xl ml-0.5">▶</span>
           </div>
         </div>
+        {hasBili && (
+          <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-pink-500/80 text-white text-[10px] font-bold z-10">B站</span>
+        )}
       </div>
     );
   }
 
-  // 播放器
-  return (
-    <div ref={containerRef}
-      className={`relative rounded-2xl overflow-hidden bg-black group ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => isPlaying && setShowControls(false)}>
-
-      <video
-        ref={videoRef}
-        src={mp4_url}
-        className="w-full aspect-video object-contain bg-black cursor-pointer"
-        autoPlay playsInline crossOrigin="anonymous"
-        onTimeUpdate={() => {
-          if (videoRef.current) {
-            setCurrentTime(videoRef.current.currentTime);
-            setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100 || 0);
-          }
-        }}
-        onLoadedMetadata={() => {
-          const v = videoRef.current;
-          if (v) {
-            setDuration(v.duration);
-            if (startTime && startTime > 0) v.currentTime = startTime;
-          }
-        }}
-        onWaiting={() => setBuffering(true)}
-        onPlaying={() => setBuffering(false)}
-        onEnded={() => setIsPlaying(false)}
-        onError={() => setError(true)}
-        onClick={() => videoRef.current?.paused ? videoRef.current.play() : videoRef.current?.pause()}
-      />
-
-      {/* Buffering */}
-      {buffering && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-          <div className="w-10 h-10 border-2 border-[#00f0ff] border-t-transparent rounded-full animate-spin" />
-        </div>
-      )}
-
-      {/* Error */}
-      {error && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 gap-4">
-          <span className="text-3xl">⚠️</span>
-          <p className="text-gray-400 text-sm">视频暂时无法播放</p>
-          <button onClick={() => { setError(false); setIsPlaying(false); }}
-            className="px-4 py-2 rounded-xl bg-[#6c5ce7] text-white text-sm">返回</button>
-        </div>
-      )}
-
-      {/* Controls */}
-      <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-12 pb-3 px-4 transition-opacity duration-300 ${
-        showControls || !isPlaying ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Progress */}
-        <div className="w-full h-1 bg-white/20 rounded-full mb-3 cursor-pointer hover:h-1.5 transition-all" onClick={seekTo}>
-          <div className="h-full bg-[#00f0ff] rounded-full relative" style={{ width: `${progress}%` }}>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-[#00f0ff] rounded-full opacity-0 group-hover:opacity-100 shadow-neon-cyan" />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button onClick={() => videoRef.current?.paused ? videoRef.current.play() : videoRef.current?.pause()}
-              className="text-white hover:text-[#00f0ff] text-lg">{videoRef.current?.paused ? '▶' : '⏸'}</button>
-            <span className="text-white/70 text-xs font-mono">{formatTime(currentTime)} / {formatTime(duration)}</span>
-            <div className="hidden sm:flex items-center gap-1">
-              <button onClick={() => { const v = volume > 0 ? 0 : 1; setVolume(v); if (videoRef.current) videoRef.current.volume = v; }}
-                className="text-white/70 hover:text-white text-sm">{volume > 0 ? '🔊' : '🔇'}</button>
-              <input type="range" min="0" max="1" step="0.1" value={volume}
-                onChange={e => { const v = parseFloat(e.target.value); setVolume(v); if (videoRef.current) videoRef.current.volume = v; }}
-                className="w-16 h-1 accent-[#00f0ff]" />
-            </div>
-          </div>
+  // B站 iframe — 主引擎
+  if (hasBili && !useMp4 && !biliError) {
+    return (
+      <div className={`rounded-2xl overflow-hidden bg-black relative ${className}`}>
+        <div className="absolute top-0 left-0 right-0 z-10 p-3 bg-gradient-to-b from-black/70 to-transparent flex items-center justify-between">
+          <p className="text-white text-sm font-medium truncate pr-8">{title || ''}</p>
           <div className="flex items-center gap-2">
-            <button onClick={() => setIsPlaying(false)} className="text-white/70 hover:text-white text-sm">✕</button>
-            <button onClick={toggleFullscreen} className="text-white/70 hover:text-white text-sm">{isFullscreen ? '↙️' : '↗️'}</button>
+            <button
+              onClick={() => setUseMp4(true)}
+              className="text-[10px] px-2 py-1 rounded bg-white/10 text-white/60 hover:bg-white/20"
+            >切换备用源</button>
+            <button onClick={() => setIsPlaying(false)} className="w-7 h-7 rounded-full bg-black/30 text-white/70 hover:bg-black/50">✕</button>
           </div>
         </div>
+        <iframe
+          src={biliUrl!}
+          title={title || 'B站视频'}
+          className="w-full aspect-video"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          onError={() => setBiliError(true)}
+        />
+        {biliError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
+            <button onClick={() => setUseMp4(true)} className="glow-btn text-sm px-6 py-2">切换到备用源 →</button>
+          </div>
+        )}
+        <button onClick={() => { setIsPlaying(false); setBiliError(false); }}
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/50 text-white/70 text-xs hover:bg-black/70 z-20">
+          ✕ 关闭
+        </button>
       </div>
+    );
+  }
+
+  // MP4 备用引擎
+  if (mp4_url) {
+    return (
+      <div className={`rounded-2xl overflow-hidden bg-black relative ${className}`}>
+        <video
+          src={`${mp4_url}${startTime ? `#t=${startTime}` : ''}`}
+          className="w-full aspect-video object-contain"
+          autoPlay controls playsInline
+          onError={() => setUseMp4(false)}
+        />
+        <button onClick={() => setIsPlaying(false)}
+          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 z-10">✕</button>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`rounded-2xl overflow-hidden bg-[#0d0d26] ${className}`}>
+      <div className="aspect-video flex items-center justify-center text-gray-500">暂无可用视频源</div>
     </div>
   );
 }
