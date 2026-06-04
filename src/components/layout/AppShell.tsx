@@ -5,6 +5,7 @@ import ParticleBackground from './ParticleBackground';
 import AICoachFab from '../ai-coach/AICoachFab';
 import AICoachPanel from '../ai-coach/AICoachPanel';
 import LevelUpModal from '../gamification/LevelUpModal';
+import PaymentModal from '../payment/PaymentModal';
 import { useUserStore } from '../../stores/useUserStore';
 
 export default function AppShell({ children }: { children: ReactNode }) {
@@ -36,6 +37,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <AICoachFab />
       <AICoachPanel />
       <LevelUpModal />
+      <PaymentModal />
 
       {showNameModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">

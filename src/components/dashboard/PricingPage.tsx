@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useMembershipStore, MembershipTier } from '../../stores/useMembershipStore';
+import { useMembershipStore } from '../../stores/useMembershipStore';
+import { usePaymentStore } from '../../stores/usePaymentStore';
 import Card from '../ui/Card';
 
 interface Plan {
-  id: MembershipTier;
+  id: string;
   name: string;
   nameEn: string;
   emoji: string;
@@ -86,19 +87,13 @@ const PLANS: Plan[] = [
 export default function PricingPage() {
   const { t, i18n } = useTranslation('common');
   const isZh = i18n.language === 'zh-CN';
-  const { tier: currentTier, upgradeTo } = useMembershipStore();
-  const [showConfirm, setShowConfirm] = useState<MembershipTier | null>(null);
+  const { tier: currentTier } = useMembershipStore();
+  const createOrder = usePaymentStore((s) => s.createOrder);
 
-  const handleUpgrade = (tier: MembershipTier) => {
-    if (tier === 'free') return;
-    setShowConfirm(tier);
-  };
-
-  const confirmUpgrade = () => {
-    if (showConfirm) {
-      upgradeTo(showConfirm);
-      setShowConfirm(null);
-    }
+  const handleUpgrade = (plan: Plan) => {
+    if (plan.id === 'free' || plan.id === currentTier) return;
+    const amount = plan.id === 'monthly' ? 49 : plan.id === 'yearly' ? 299 : 999;
+    createOrder(plan.id, isZh ? plan.name : plan.nameEn, amount);
   };
 
   return (
@@ -168,7 +163,7 @@ export default function PricingPage() {
                 </ul>
 
                 <button
-                  onClick={() => handleUpgrade(plan.id)}
+                  onClick={() => handleUpgrade(plan)}
                   disabled={isCurrent}
                   className={`w-full py-3 rounded-xl font-bold transition-all ${
                     isCurrent
@@ -182,7 +177,7 @@ export default function PricingPage() {
                     ? (isZh ? '当前方案' : 'Current Plan')
                     : plan.id === 'free'
                       ? (isZh ? '免费开始' : 'Start Free')
-                      : (isZh ? '立即升级' : 'Upgrade Now') + ' →'}
+                      : (isZh ? '💰 立即购买' : '💰 Buy Now')}
                 </button>
               </Card>
             </motion.div>
@@ -190,50 +185,6 @@ export default function PricingPage() {
         })}
       </div>
 
-      {/* Upgrade Confirmation Modal */}
-      {showConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm" onClick={() => setShowConfirm(null)}>
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="glass-card p-8 max-w-md w-full mx-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="text-center mb-6">
-              <div className="text-6xl mb-4">
-                {PLANS.find(p => p.id === showConfirm)?.emoji}
-              </div>
-              <h2 className="text-2xl font-bold mb-2">
-                {isZh ? '确认升级' : 'Confirm Upgrade'}
-              </h2>
-              <p className="text-gray-400 text-sm">
-                {isZh
-                  ? `升级到 ${PLANS.find(p => p.id === showConfirm)?.name}`
-                  : `Upgrade to ${PLANS.find(p => p.id === showConfirm)?.nameEn}`}
-              </p>
-              <p className="text-3xl font-extrabold text-[#a855f7] mt-3">
-                {PLANS.find(p => p.id === showConfirm)?.price}
-              </p>
-            </div>
-            <p className="text-xs text-gray-500 text-center mb-4">
-              {isZh
-                ? '* 演示模式：点击确认即可体验会员功能'
-                : '* Demo mode: Click confirm to experience premium features'}
-            </p>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setShowConfirm(null)}
-                className="flex-1 py-3 rounded-xl border border-[#1a1a3e] text-gray-400 hover:text-white"
-              >
-                {isZh ? '取消' : 'Cancel'}
-              </button>
-              <button onClick={confirmUpgrade} className="flex-1 py-3 rounded-xl glow-btn">
-                {isZh ? '确认升级 ✨' : 'Confirm ✨'}
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </div>
   );
 }
