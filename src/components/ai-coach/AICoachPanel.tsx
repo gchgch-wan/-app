@@ -118,7 +118,8 @@ export default function AICoachPanel() {
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 50, scale: 0.95 }}
-      className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] max-h-[600px] glass-card flex flex-col overflow-hidden"
+      className="fixed right-2 md:right-6 z-50 w-[calc(100vw-1rem)] md:w-[380px] max-w-[380px] glass-card flex flex-col overflow-hidden"
+      style={{ bottom: 'calc(5.5rem + env(safe-area-inset-bottom, 0px))', maxHeight: 'calc(100vh - 8rem)' }}
     >
       {/* Header */}
       <div className="p-4 border-b border-[#1a1a3e] flex items-center justify-between">

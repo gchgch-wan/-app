@@ -16,6 +16,7 @@ const CommunityPage = lazy(() => import('./components/social/CommunityPage'));
 const NutritionPage = lazy(() => import('./components/dashboard/NutritionPage'));
 const PricingPage = lazy(() => import('./components/dashboard/PricingPage'));
 const StandaloneVideoPage = lazy(() => import('./components/workout/StandaloneVideoPage'));
+const NotFoundPage = lazy(() => import('./components/layout/NotFoundPage'));
 const AdminPage = lazy(() => import('./components/admin/AdminPage'));
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/videos" element={<StandaloneVideoPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </AppShell>

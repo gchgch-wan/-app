@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useUserStore } from '../../stores/useUserStore';
+import VideoPlayer from '../ui/VideoPlayer';
 
 const features = [
   { icon: '🤖', key: 'ai', color: '#00f0ff' },
@@ -158,13 +159,10 @@ export default function LandingPage() {
           </h2>
           <p className="text-gray-400 mb-8">跟着教练一起，每天只要15分钟</p>
           <div className="glass-card overflow-hidden">
-            <iframe
-              src="//player.bilibili.com/player.html?bvid=BV1Be411M7Tv&page=1&high_quality=1&autoplay=0&danmaku=0"
-              title="HIIT训练预览"
-              className="w-full aspect-video"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-              sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
+            <VideoPlayer
+              mp4_1080p="https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/1080p.mp4"
+              mp4_720p="https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/720p.mp4"
+              title="HIIT 全身燃脂训练预览"
             />
           </div>
         </div>
