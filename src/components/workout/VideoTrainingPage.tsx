@@ -213,7 +213,7 @@ export default function VideoTrainingPage() {
                   <button onClick={() => setSelectedVideo(null)} className="text-white text-2xl hover:text-gray-300">✕</button>
                 </div>
                 <VideoPlayer
-                  mp4_1080p={`https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/1080p.mp4`}
+                  mp4_url="https://www.w3schools.com/html/mov_bbb.mp4"
                   title={isZh ? selectedVideo.titleZh : selectedVideo.title}
                 />
                 <div className="mt-4 flex flex-wrap gap-2">

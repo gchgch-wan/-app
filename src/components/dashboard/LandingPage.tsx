@@ -160,8 +160,8 @@ export default function LandingPage() {
           <p className="text-gray-400 mb-8">跟着教练一起，每天只要15分钟</p>
           <div className="glass-card overflow-hidden">
             <VideoPlayer
-              mp4_1080p="https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/1080p.mp4"
-              mp4_720p="https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/720p.mp4"
+              mp4_url="https://www.w3schools.com/html/mov_bbb.mp4"
+              startTime={5}
               title="HIIT 全身燃脂训练预览"
             />
           </div>

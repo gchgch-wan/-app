@@ -61,17 +61,8 @@ export default function WorkoutDetail() {
       {/* Preview Video */}
       <div className="mb-6">
         <VideoPlayer
-          mp4_1080p={
-            workout.category === 'hiit' ? 'https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/1080p.mp4' :
-            workout.category === 'yoga' ? 'https://cdn.coverr.co/videos/coverr-woman-doing-yoga-7084/1080p.mp4' :
-            workout.category === 'strength' ? 'https://cdn.coverr.co/videos/coverr-man-lifting-weights-in-the-gym-4221/1080p.mp4' :
-            workout.category === 'dance' ? 'https://cdn.coverr.co/videos/coverr-young-woman-dancing-hip-hop-8967/1080p.mp4' :
-            workout.category === 'stretch' ? 'https://cdn.coverr.co/videos/coverr-woman-stretching-her-body-5877/1080p.mp4' :
-            'https://cdn.coverr.co/videos/coverr-a-man-and-a-woman-running-on-a-treadmill-1203/1080p.mp4'
-          }
-          mp4_720p={
-            workout.category === 'hiit' ? 'https://cdn.coverr.co/videos/coverr-woman-doing-fitness-exercise-5643/720p.mp4' : undefined
-          }
+          mp4_url="https://www.w3schools.com/html/mov_bbb.mp4"
+          startTime={workout.category === 'hiit' ? 5 : workout.category === 'yoga' ? 10 : 15}
           title={getTitle() + ' - 教学视频'}
         />
       </div>
