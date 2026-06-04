@@ -108,6 +108,68 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Transformations Gallery */}
+      <section className="py-24 px-4 bg-[#0a0a1a]/50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              真实的<span className="neon-text">蜕变故事</span>
+            </h2>
+            <p className="text-gray-400">他们的成果，就是你坚持下去的理由</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: '小雯', age: '28岁 · 上班族', period: '90天', result: '-16kg', desc: '以前总找借口说没时间去健身房，NebulaFit让我在家就完成了蜕变。', img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&h=600&fit=crop' },
+              { name: '阿杰', age: '24岁 · 大学生', period: '120天', result: '+13kg肌肉', desc: '只用一对哑铃就实现了增肌目标，课程讲解非常细致。', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=600&fit=crop' },
+              { name: 'Lily', age: '32岁 · 产后妈妈', period: '180天', result: '-13kg', desc: '产后一年才开始训练，瑜伽课帮我修复了腹直肌分离。', img: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=500&h=600&fit=crop' },
+            ].map((s, i) => (
+              <motion.div
+                key={s.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="glass-card overflow-hidden group"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img src={s.img} alt={s.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] to-transparent" />
+                  <div className="absolute bottom-3 left-3">
+                    <span className="px-2 py-1 rounded-full bg-[#00ff88]/20 text-[#00ff88] text-xs font-bold border border-[#00ff88]/30">
+                      {s.period} → {s.result}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold">{s.name}</h3>
+                  <p className="text-xs text-gray-500 mb-2">{s.age}</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">"{s.desc}"</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Preview */}
+      <section className="py-24 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            看看<span className="neon-text">训练是什么样</span>
+          </h2>
+          <p className="text-gray-400 mb-8">跟着教练一起，每天只要15分钟</p>
+          <div className="glass-card overflow-hidden">
+            <iframe
+              src="//player.bilibili.com/player.html?bvid=BV1Be411M7Tv&page=1&high_quality=1&autoplay=0&danmaku=0"
+              title="HIIT训练预览"
+              className="w-full aspect-video"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Footer */}
       <section className="py-24 px-4 text-center">
         <div className="max-w-2xl mx-auto">

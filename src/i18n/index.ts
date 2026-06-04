@@ -7,27 +7,30 @@ import zhHome from './locales/zh-CN/home.json';
 import zhWorkout from './locales/zh-CN/workout.json';
 import zhGamification from './locales/zh-CN/gamification.json';
 import zhAi from './locales/zh-CN/ai.json';
+import zhSocial from './locales/zh-CN/social.json';
 
 import enCommon from './locales/en/common.json';
 import enHome from './locales/en/home.json';
 import enWorkout from './locales/en/workout.json';
 import enGamification from './locales/en/gamification.json';
 import enAi from './locales/en/ai.json';
+import enSocial from './locales/en/social.json';
 
 import jaCommon from './locales/ja/common.json';
 import jaHome from './locales/ja/home.json';
 import jaWorkout from './locales/ja/workout.json';
 import jaGamification from './locales/ja/gamification.json';
 import jaAi from './locales/ja/ai.json';
+import jaSocial from './locales/ja/social.json';
 
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
-      'zh-CN': { common: zhCommon, home: zhHome, workout: zhWorkout, gamification: zhGamification, ai: zhAi },
-      en: { common: enCommon, home: enHome, workout: enWorkout, gamification: enGamification, ai: enAi },
-      ja: { common: jaCommon, home: jaHome, workout: jaWorkout, gamification: jaGamification, ai: jaAi },
+      'zh-CN': { common: zhCommon, home: zhHome, workout: zhWorkout, gamification: zhGamification, ai: zhAi, social: zhSocial },
+      en: { common: enCommon, home: enHome, workout: enWorkout, gamification: enGamification, ai: enAi, social: enSocial },
+      ja: { common: jaCommon, home: jaHome, workout: jaWorkout, gamification: jaGamification, ai: jaAi, social: jaSocial },
     },
     fallbackLng: 'zh-CN',
     defaultNS: 'common',

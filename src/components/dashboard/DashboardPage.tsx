@@ -70,28 +70,21 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
-        <Link to="/workouts">
-          <Card hover className="text-center">
-            <div className="text-4xl mb-3">🏋️</div>
-            <h3 className="font-semibold mb-1">开始训练</h3>
-            <p className="text-gray-400 text-sm">选择你的今日训练计划</p>
-          </Card>
-        </Link>
-        <Link to="/achievements">
-          <Card hover className="text-center">
-            <div className="text-4xl mb-3">🏆</div>
-            <h3 className="font-semibold mb-1">成就徽章</h3>
-            <p className="text-gray-400 text-sm">查看你的健身里程碑</p>
-          </Card>
-        </Link>
-        <Link to="/challenges">
-          <Card hover className="text-center">
-            <div className="text-4xl mb-3">⚡</div>
-            <h3 className="font-semibold mb-1">每日挑战</h3>
-            <p className="text-gray-400 text-sm">完成挑战获取额外奖励</p>
-          </Card>
-        </Link>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {[
+          { to: '/workouts', icon: '🏋️', title: '开始训练', desc: '选择训练计划' },
+          { to: '/coaches', icon: '👨‍🏫', title: '教练团队', desc: '专业真人教练' },
+          { to: '/nutrition', icon: '🍽️', title: '营养饮食', desc: '科学餐单计划' },
+          { to: '/achievements', icon: '🏆', title: '成就徽章', desc: '查看里程碑' },
+        ].map((item) => (
+          <Link to={item.to} key={item.to}>
+            <Card hover className="text-center h-full">
+              <div className="text-3xl mb-2">{item.icon}</div>
+              <h3 className="font-semibold text-sm">{item.title}</h3>
+              <p className="text-gray-400 text-xs">{item.desc}</p>
+            </Card>
+          </Link>
+        ))}
       </div>
 
       {/* Recent Workouts */}

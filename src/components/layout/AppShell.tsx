@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Navbar from './Navbar';
+import MobileNav from './MobileNav';
 import ParticleBackground from './ParticleBackground';
 import AICoachFab from '../ai-coach/AICoachFab';
 import AICoachPanel from '../ai-coach/AICoachPanel';
@@ -30,7 +31,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-[#0a0a1a] text-white">
       <ParticleBackground />
       <Navbar />
-      <main className="relative z-10 pt-16">{children}</main>
+      <main className="relative z-10 pt-16 pb-20 md:pb-8">{children}</main>
+      <MobileNav />
       <AICoachFab />
       <AICoachPanel />
       <LevelUpModal />

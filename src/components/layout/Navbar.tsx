@@ -2,15 +2,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useUserStore } from '../../stores/useUserStore';
+import { useMembershipStore } from '../../stores/useMembershipStore';
 import { cn } from '../../utils/cn';
 
 const NAV_LINKS = [
   { path: '/', label: 'home', icon: '🏠' },
   { path: '/dashboard', label: 'dashboard', icon: '📊' },
   { path: '/workouts', label: 'workouts', icon: '🏋️' },
+  { path: '/videos', label: 'videos', icon: '🎬' },
+  { path: '/nutrition', label: 'nutrition', icon: '🍽️' },
+  { path: '/coaches', label: 'coaches', icon: '👨‍🏫' },
   { path: '/achievements', label: 'achievements', icon: '🏆' },
   { path: '/leaderboard', label: 'leaderboard', icon: '📋' },
-  { path: '/challenges', label: 'challenges', icon: '⚡' },
 ];
 
 const LANGUAGES = [
@@ -23,6 +26,7 @@ export default function Navbar() {
   const { t, i18n } = useTranslation('common');
   const location = useLocation();
   const { level, xp, streak, name } = useUserStore();
+  const { tier } = useMembershipStore();
   const [langOpen, setLangOpen] = useState(false);
 
   const changeLanguage = (code: string) => {
@@ -60,8 +64,18 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {name && (
             <div className="hidden sm:flex items-center gap-3 text-sm">
+              {tier !== 'free' && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-[#a855f7] to-[#ff00e5] text-white">
+                  {tier === 'yearly' ? '👑 VIP' : '⭐ PRO'}
+                </span>
+              )}
               <span className="text-[#00f0ff]">🔥 {streak}天</span>
               <span className="text-[#a855f7]">Lv.{level}</span>
+              {tier === 'free' && (
+                <Link to="/pricing" className="px-3 py-1 rounded-full text-[10px] font-bold bg-[#a855f7]/10 text-[#a855f7] border border-[#a855f7]/30 hover:bg-[#a855f7]/20 transition-all">
+                  升级 →
+                </Link>
+              )}
             </div>
           )}
 

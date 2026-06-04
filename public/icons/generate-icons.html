@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><body><canvas id="c" width="512" height="512"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+// Background gradient
+const g=x.createLinearGradient(0,0,512,512);
+g.addColorStop(0,'#0a0a1a');g.addColorStop(0.5,'#1a1a3e');g.addColorStop(1,'#0a0a1a');
+x.fillStyle=g;x.beginPath();x.roundRect(0,0,512,512,80);x.fill();
+// Nebula glow
+x.fillStyle='#6c5ce7';x.filter='blur(40px)';x.beginPath();x.arc(200,180,120,0,Math.PI*2);x.fill();
+x.fillStyle='#00f0ff';x.beginPath();x.arc(320,300,100,0,Math.PI*2);x.fill();
+x.filter='none';
+// "N" letter
+x.fillStyle='#fff';x.font='bold 280px Inter,sans-serif';x.textAlign='center';x.textBaseline='middle';
+x.fillText('N',256,220);
+// Glow line
+x.strokeStyle='#00f0ff';x.lineWidth=8;x.shadowColor='#00f0ff';x.shadowBlur=20;
+x.beginPath();x.moveTo(100,380);x.lineTo(412,380);x.stroke();
+x.shadowBlur=0;
+console.log('Icon generated! Right-click canvas to save as PNG.');
+</script></body></html>

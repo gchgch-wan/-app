@@ -3,6 +3,9 @@
     "home": "Home",
     "dashboard": "Dashboard",
     "workouts": "Workouts",
+    "videos": "Videos",
+    "nutrition": "Nutrition",
+    "coaches": "Coaches",
     "achievements": "Achievements",
     "leaderboard": "Leaderboard",
     "challenges": "Challenges",
@@ -20,12 +23,7 @@
     "join": "Join Now",
     "try": "Free Trial"
   },
-  "language": {
-    "switch": "Language",
-    "zh": "中文",
-    "en": "English",
-    "ja": "日本語"
-  },
+  "language": { "switch": "Language", "zh": "中文", "en": "English", "ja": "日本語" },
   "loading": "Loading...",
   "error": "Something went wrong. Please try again."
 }

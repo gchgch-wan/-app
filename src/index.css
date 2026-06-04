@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* iOS Safe Area Support */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
 @layer base {
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -10,7 +18,14 @@
     color: #ffffff;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
   }
+  input, textarea { user-select: text; -webkit-user-select: text; }
+  .safe-area-top { padding-top: var(--sat); }
+  .safe-area-bottom { padding-bottom: var(--sab); }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: #0a0a1a; }
   ::-webkit-scrollbar-thumb { background: #1a1a3e; border-radius: 3px; }
