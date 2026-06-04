@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { COACHES } from '../../data/coaches';
+import { coachAvatar } from '../../services/imageFallback';
 import Card from '../ui/Card';
 
 export default function CoachPage() {
@@ -34,7 +35,7 @@ export default function CoachPage() {
                 <div className="sm:w-48 flex-shrink-0">
                   <div className="relative rounded-2xl overflow-hidden aspect-[3/4]">
                     <img
-                      src={coach.photo}
+                      src={coach.photo || coachAvatar(coach.name, i)}
                       alt={isZh ? coach.name : coach.nameEn}
                       className="w-full h-full object-cover"
                       loading="lazy"

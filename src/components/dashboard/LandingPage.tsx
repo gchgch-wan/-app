@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useUserStore } from '../../stores/useUserStore';
 import VideoPlayer from '../ui/VideoPlayer';
+import { transformPlaceholder } from '../../services/imageFallback';
 
 const features = [
   { icon: '🤖', key: 'ai', color: '#00f0ff' },
@@ -120,9 +121,9 @@ export default function LandingPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: '小雯', age: '28岁 · 上班族', period: '90天', result: '-16kg', desc: '以前总找借口说没时间去健身房，NebulaFit让我在家就完成了蜕变。', img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&h=600&fit=crop' },
-              { name: '阿杰', age: '24岁 · 大学生', period: '120天', result: '+13kg肌肉', desc: '只用一对哑铃就实现了增肌目标，课程讲解非常细致。', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=600&fit=crop' },
-              { name: 'Lily', age: '32岁 · 产后妈妈', period: '180天', result: '-13kg', desc: '产后一年才开始训练，瑜伽课帮我修复了腹直肌分离。', img: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=500&h=600&fit=crop' },
+              { name: '小雯', age: '28岁 · 上班族', period: '90天', result: '-16kg', desc: '以前总找借口说没时间去健身房，NebulaFit让我在家就完成了蜕变。', img: transformPlaceholder('小雯', 0) },
+              { name: '阿杰', age: '24岁 · 大学生', period: '120天', result: '+13kg肌肉', desc: '只用一对哑铃就实现了增肌目标，课程讲解非常细致。', img: transformPlaceholder('阿杰', 1) },
+              { name: 'Lily', age: '32岁 · 产后妈妈', period: '180天', result: '-13kg', desc: '产后一年才开始训练，瑜伽课帮我修复了腹直肌分离。', img: transformPlaceholder('Lily', 2) },
             ].map((s, i) => (
               <motion.div
                 key={s.name}

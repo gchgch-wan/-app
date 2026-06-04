@@ -40,7 +40,7 @@ export interface ForeignCoach {
 export const FOREIGN_COACHES: ForeignCoach[] = [
   {
     id: 'chris-heria', name: 'Chris Heria', country: 'USA', flag: '🇺🇸', emoji: '💪',
-    photo: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Calisthenics & Street Workout King', titleZh: '街头健身之王 · 自重训练大师',
     followers: '5.2M', specialty: ['Calisthenics', 'Street Workout', 'Abs', 'HIIT'],
     specialtyZh: ['自重训练', '街头健身', '腹肌雕刻', 'HIIT燃脂'],
@@ -52,7 +52,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'pamela-reif', name: 'Pamela Reif', country: 'Germany', flag: '🇩🇪', emoji: '🔥',
-    photo: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Queen of Home Workouts', titleZh: '居家健身女王 · B站官方入驻',
     followers: '9.8M', specialty: ['Full Body', 'HIIT', 'Abs', 'Booty', 'Dance'],
     specialtyZh: ['全身训练', 'HIIT燃脂', '腹肌', '翘臀', '舞蹈健身'],
@@ -64,7 +64,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'chloe-ting', name: 'Chloe Ting', country: 'Australia', flag: '🇦🇺', emoji: '🌟',
-    photo: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Challenge Queen · 2 Week Shred', titleZh: '挑战赛女王 · 2周变身计划',
     followers: '25M', specialty: ['Full Body', 'Abs', 'HIIT', 'Challenges'],
     specialtyZh: ['全身燃脂', '腹肌挑战', 'HIIT', '打卡挑战'],
@@ -76,7 +76,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'jeff-cavaliere', name: 'Jeff Cavaliere', country: 'USA', flag: '🇺🇸', emoji: '🧠',
-    photo: 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Physical Therapist · Strength Science', titleZh: '物理治疗师 · Athlean-X创始人',
     followers: '13.8M', specialty: ['Strength', 'Rehab', 'Form Correction'],
     specialtyZh: ['力量训练', '运动康复', '姿势纠正', '科学健身'],
@@ -88,7 +88,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'heather-robertson', name: 'Heather Robertson', country: 'Canada', flag: '🇨🇦', emoji: '⚡',
-    photo: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&h=400&fit=crop',
+    photo: '',
     title: 'HIIT & Full Body Expert', titleZh: 'HIIT全身训练专家 · 无废话跟练',
     followers: '2.4M', specialty: ['HIIT', 'Full Body', 'Strength', 'Pilates'],
     specialtyZh: ['HIIT燃脂', '全身训练', '力量塑形', '普拉提'],
@@ -100,7 +100,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'madfit', name: 'Maddie Lymburner', country: 'Canada', flag: '🇨🇦', emoji: '💃',
-    photo: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Dance Fitness & Strength Fusion', titleZh: '舞蹈健身融合力量训练',
     followers: '9.2M', specialty: ['Dance', 'Full Body', 'Strength', 'Stretch'],
     specialtyZh: ['舞蹈健身', '全身塑形', '力量训练', '拉伸放松'],
@@ -112,7 +112,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'yoga-with-adriene', name: 'Adriene Mishler', country: 'USA', flag: '🇺🇸', emoji: '🧘',
-    photo: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Yoga for Everyone', titleZh: '全民瑜伽导师 · B站中字搬运',
     followers: '12.6M', specialty: ['Yoga', 'Stretch', 'Meditation', 'Recovery'],
     specialtyZh: ['瑜伽', '拉伸', '冥想', '恢复训练'],
@@ -124,7 +124,7 @@ export const FOREIGN_COACHES: ForeignCoach[] = [
   },
   {
     id: 'fraser-wilson', name: 'Fraser Wilson', country: 'Australia', flag: '🇦🇺', emoji: '🏋️',
-    photo: 'https://images.unsplash.com/photo-1583468982228-19f19164aee2?w=400&h=400&fit=crop',
+    photo: '',
     title: 'Abs & Bodyweight Specialist', titleZh: '腹肌自重训练专家',
     followers: '3.1M', specialty: ['Abs', 'Full Body', 'HIIT', 'Bodyweight'],
     specialtyZh: ['腹肌训练', '全身自重', 'HIIT燃脂', '居家健身'],
