@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useMembershipStore } from '../../stores/useMembershipStore';
 import { STANDALONE_VIDEOS, StandaloneVideo, VideoCat } from '../../data/standaloneVideos';
+import { generatePoster } from '../../services/posterGenerator';
 import Card from '../ui/Card';
 import VideoPlayer from '../ui/VideoPlayer';
 import ErrorBoundary from '../ui/ErrorBoundary';
@@ -73,8 +74,13 @@ export default function StandaloneVideoPage() {
             <motion.div key={video.id}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }}>
               <Card hover className="overflow-hidden h-full cursor-pointer" onClick={() => handlePlay(video)}>
-                <div className="relative aspect-video bg-gradient-to-br from-[#0d0d26] to-[#1a1a3e] flex items-center justify-center">
-                  <span className="text-4xl opacity-20">{CATEGORIES.find(c => c.key === video.category)?.icon || '🎬'}</span>
+                <div className="relative aspect-video">
+                  <img
+                    src={generatePoster(isZh ? video.titleZh : video.title, video.category, video.duration, video.difficulty)}
+                    alt={isZh ? video.titleZh : video.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                   <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono">
                     {video.duration}min
                   </span>
@@ -116,6 +122,7 @@ export default function StandaloneVideoPage() {
                   mp4_1080p={activeVideo.mp4_1080p}
                   mp4_720p={activeVideo.mp4_720p}
                   mp4_480p={activeVideo.mp4_480p}
+                  poster={generatePoster(isZh ? activeVideo.titleZh : activeVideo.title, activeVideo.category, activeVideo.duration, activeVideo.difficulty)}
                   title={isZh ? activeVideo.titleZh : activeVideo.title}
                 />
                 <div className="mt-3 flex flex-wrap gap-2">

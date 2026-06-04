@@ -58,7 +58,7 @@ export default function VideoPlayer({ mp4_1080p, mp4_720p, mp4_480p, poster, tit
       <div className={`relative rounded-2xl overflow-hidden cursor-pointer group ${className}`}
         onClick={() => setIsPlaying(true)}>
         {poster ? (
-          <img src={poster} alt={title} className="w-full aspect-video object-cover" loading="lazy" />
+          <img src={poster} alt={title || ''} className="w-full aspect-video object-cover" loading="lazy" />
         ) : (
           <div className="w-full aspect-video bg-gradient-to-br from-[#0d0d26] via-[#12122e] to-[#1a1a3e] flex flex-col items-center justify-center gap-4">
             <div className="w-20 h-20 rounded-full bg-[#6c5ce7]/20 flex items-center justify-center group-hover:bg-[#6c5ce7]/40 group-hover:scale-110 transition-all duration-300">
@@ -67,6 +67,11 @@ export default function VideoPlayer({ mp4_1080p, mp4_720p, mp4_480p, poster, tit
             {title && <p className="text-white/80 text-sm font-medium px-4 text-center">{title}</p>}
           </div>
         )}
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all flex items-center justify-center">
+          <div className="w-14 h-14 rounded-full bg-[#6c5ce7]/80 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+            <span className="text-white text-2xl ml-0.5">▶</span>
+          </div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
         <span className="absolute bottom-3 right-3 px-2 py-1 rounded-md bg-black/60 text-white text-[10px] font-mono">
           {availableQualities[0]}
